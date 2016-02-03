@@ -1,4 +1,3 @@
-<!--<link rel="import" href="//www.polymer-project.org/0.5/components/polymer/polymer.html">-->
 <link rel="import" href="bower_components/polymer/polymer.html">
 
 <link rel="import" href="steren-work-service.html">
@@ -15,8 +14,22 @@
 
     <steren-work-service id="service" works="{{works}}"></steren-work-service>
 
-    <div layout horizontal center-justified wrap hidden?="{{show != 'featured'}}">
-      <template repeat="{{work in works | filterProp('featured')}}">
+    <div layout horizontal center-justified wrap hidden?="{{show != 'web'}}">
+      <template repeat="{{work in works | filterContain('type', 'web')}}">
+        <steren-work work={{work}}>
+        </steren-work>
+      </template>
+    </div>
+    
+    <div layout horizontal center-justified wrap hidden?="{{show != 'ios'}}">
+      <template repeat="{{work in works | filterContain('type', 'ios')}}">
+        <steren-work work={{work}}>
+        </steren-work>
+      </template>
+    </div>
+    
+    <div layout horizontal center-justified wrap hidden?="{{show != 'data'}}">
+      <template repeat="{{work in works | filterContain('type', 'data')}}">
         <steren-work work={{work}}>
         </steren-work>
       </template>
