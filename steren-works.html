@@ -1,12 +1,12 @@
-<link rel="import" href="bower_components/polymer/polymer.html">
-<link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
-<link rel="import" href="bower_components/paper-radio-button/paper-radio-button.html">
-<link rel="import" href="bower_components/core-selector/core-selector.html">
+<link rel="import" href="components/polymer/polymer.html">
+<link rel="import" href="components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="components/iron-selector/iron-selector.html">
 
 <link rel="import" href="steren-work-list.html">
 <link rel="import" href="steren-card.html">
 
-<polymer-element name="steren-works" attributes="show">
+<dom-module id="steren-works">
   <template>
     <style>
 
@@ -65,9 +65,9 @@
       }
     </style>
 
-    <div class="content-header" layout vertical center> 
+    <div class="content-header" class="layout vertical center"> 
 
-      <div layout horizontal center center-justified wrap>
+      <div class="layout horizontal center center-justified wrap">
         <steren-card id="brief">
           <p>
               I am Jeremy, a developer from Chicago. 
@@ -82,16 +82,20 @@
       </div>
     </div>
     
-    <steren-work-list show="{{show}}" order="{{order}}" type="{{type}}" participation="{{participation}}" seriousness="{{seriousness}}"></steren-work-list>
+    <steren-work-list></steren-work-list>
 
   </template>
 
   <script>
   Polymer({
+    is: "steren-works",
+    properties: {
+      show: String
+    },
     order : 'date',
     type : ['code', 'graphic', 'event'],
     participation : ['lead', 'contribution'], 
     seriousness : ['serious', 'notsoserious']
   });
   </script>
-</polymer-element>
+</dom-module>
