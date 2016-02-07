@@ -181,13 +181,13 @@
 
           <div class="bottom fit horizontal layout">
             <paper-tabs id="tabs">
-              <paper-tab name="web">
+              <paper-tab id="web">
                 <a href="/web" class="horizontal center-center layout">Web</a>
               </paper-tab>
-              <paper-tab name="ios">
+              <paper-tab id="ios">
                 <a href="/ios" class="horizontal center-center layout">iOS</a>
               </paper-tab>
-              <paper-tab name="data">
+              <paper-tab id="data">
                 <a href="/data" class="horizontal center-center layout">Data</a>
               </paper-tab>
             </paper-tabs>
@@ -210,10 +210,10 @@
       var tabs = document.querySelector('paper-tabs');
       var works = document.querySelector('steren-works');
 
-      page('/', function() { works.show = tabs.selected = 'all'; });
-      page('/web', function() { works.show = tabs.selected = 'web'; });
-      page('/ios', function() { works.show = tabs.selected = 'ios'; });
-      page('/data', function() { works.show = tabs.selected =  'data'; });
+      page('/',     function() { works.show = tabs.selected = 'all'; });
+      page('/web',  function() { works.show = tabs.selected = 'web'; });
+      page('/ios',  function() { works.show = tabs.selected = 'ios'; });
+      page('/data', function() { works.show = tabs.selected = 'data'; });
       page({hashbang: true});
 
     </script>
