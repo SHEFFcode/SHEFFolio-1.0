@@ -3,6 +3,7 @@
 <link rel="import" href="components/paper-card/paper-card.html">
 <link rel="import" href="steren-work-service.html">
 <link rel="import" href="steren-work.html">
+<link rel="import" href="constant.html">
 
 <dom-module id="steren-work-list">
   <style>
@@ -65,8 +66,11 @@
                on-response="worksLoaded"
                handleAs="json">
     </iron-ajax>
+    
+    <constant-element></constant-element>
+    <iron-meta id="meta"></iron-meta>
 
-    <template is="dom-repeat" items="{{works}}">
+    <template is="dom-repeat" items="{{works}}" filter="web">
 
       <div class="layout horizontal center center-justified wrap">
         <paper-card heading="{{item.title}}">
@@ -84,7 +88,7 @@
       </div>
     </template>
 
-    <span>{{hello}}</span>
+    <span>{{show1}}</span>
 
   </template>
   <script>
@@ -102,7 +106,15 @@
         hello: {
           type: String,
           notify: true
+        },
+        show1: {
+          type: String,
+          notify: true
         }
+      },
+      web: function(item) {
+        var aValue = localStorage.getItem("category");
+        return item.type == aValue;
       },
       ready: function(){
         this.contacts = [
@@ -112,7 +124,11 @@
           {
             category: "Web"
           }
+         
         ];
+
+         var aValue = localStorage.getItem("category");
+          console.log(aValue);
       },
       worksLoaded: function() {
         // Make a copy of the loaded data
@@ -120,5 +136,6 @@
         console.log(this.works);
       }
     });
+
   </script>
 </dom-module>

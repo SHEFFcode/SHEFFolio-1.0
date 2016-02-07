@@ -2,6 +2,7 @@
 <link rel="import" href="components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="components/paper-radio-button/paper-radio-button.html">
 <link rel="import" href="components/iron-selector/iron-selector.html">
+<link rel="import" href="components/iron-meta/iron-meta.html">
 
 <link rel="import" href="steren-work-list.html">
 <link rel="import" href="steren-card.html">
@@ -63,10 +64,17 @@
           display: none;
         }
       }
+      
+      .hidden{
+        display: none;
+      }
+      
+      
     </style>
+    
 
     <div class="content-header" class="layout vertical center"> 
-
+     
       <div class="layout horizontal center center-justified wrap">
         <steren-card id="brief">
           <p>
@@ -81,7 +89,7 @@
         </steren-card>
       </div>
     </div>
-
+    
     <div class="layout horizontal center center-justified wrap">
       <steren-work-list></steren-work-list>
     </div>
@@ -92,7 +100,24 @@
     Polymer({
       is: "steren-works",
       properties: {
-        show: String
+        show: {
+          type: String,
+          notify: true,
+          observer: 'log'
+        },
+         category: {
+          type: String
+        }
+      },
+      log: function(){
+          console.log(this.show);
+      },
+      category: {
+          type: String,
+          notify: true
+        },
+      ready: function(){
+        console.log(this.category);
       },
       order : 'date',
       type : ['code', 'graphic', 'event'],
