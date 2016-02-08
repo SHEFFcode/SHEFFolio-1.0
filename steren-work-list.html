@@ -52,10 +52,12 @@
     }
     p {
       margin: 0;
+      color: #000;
     }
 
     paper-card{
       margin-bottom: 20px;
+      text-align: center;
     }
 
   </style>
@@ -118,6 +120,9 @@
       },
       data: function(item) {;
         return item.type == 'data';
+      },
+      all: function(item) {;
+        return true;
       },
       ready: function(){
         this.contacts = [

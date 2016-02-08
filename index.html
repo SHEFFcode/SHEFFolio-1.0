@@ -3,14 +3,26 @@
 <html>
   <head>
     <title>Jeremy Shefer</title>
-
+    <meta charset="utf-8">
     <meta name="viewport"  content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-
     <meta name="description" content="SHEFFolio">
     <meta name="author" content="Jeremy Shefer">
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#000">
+    <!-- Tile color for Win8 -->
+    <meta name="msapplication-TileColor" content="#000">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="JSP">
+    <link rel="icon" sizes="48x48" href="icon-48.svg">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Jeremy's Portfolio">
+    <link rel="apple-touch-icon" href="icon-48.svg">
 
-    <link rel="icon" sizes="192x192" href="icon48.svg">
-    <link rel="icon" sizes="32x32"   href="icon24.svg" >
+    <link rel="icon" sizes="48x48" href="icon48.svg">
+    <link rel="icon" sizes="24x24"   href="icon24.svg" >
 
     <meta name="theme-color" content="#009688">
 
@@ -26,6 +38,8 @@
     <link rel="import" href="components/paper-item/paper-item.html">
     <link rel="import" href="components/iron-icons/iron-icons.html">
     <link rel="import" href="components/iron-meta/iron-meta.html">
+    <link rel="import" href="components/iron-pages/iron-pages.html">
+    <link rel="import" href="sheff-contact.html">
 
 
     <link rel="import" href="steren-works.html">
@@ -102,6 +116,36 @@
         margin: 2em auto;
       }
 
+      paper-material {
+        border-radius: 2px;
+        height: 100%;
+        padding: 16px 0 16px 0;
+        width: calc(98.66% - 16px);
+        margin: 16px auto;
+        background: white;
+      }
+
+      @media (max-width: 600px) {
+        paper-material {
+          --menu-container-display: none;
+          width: calc(97.33% - 32px);
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+      }
+
+      @media (min-width: 601px) {
+        paper-material {
+          width: calc(98% - 46px);
+          margin-bottom: 32px;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+        iron-pages {
+          padding: 48px 62px;
+        }
+      }
+
     </style>
     <style is="custom-style">
       paper-toolbar {
@@ -128,7 +172,7 @@
 
         <section>
           <a href="/">
-            <paper-item class="selected">
+            <paper-item>
               <iron-icon icon="icons:home"></iron-icon>
               Projects
             </paper-item>
@@ -136,13 +180,13 @@
           <a href="http://blog.steren.fr" target="_blank">
             <paper-item>
               <iron-icon icon="icons:subject"></iron-icon>
-              Blog
+              Fun
             </paper-item>
           </a>
           <a href="http://labs.steren.fr" target="_blank">
             <paper-item>
               <iron-icon icon="icons:explore" aria-label="star"></iron-icon>
-              Labs
+              Contact
             </paper-item>
           </a>
         </section>
@@ -198,7 +242,36 @@
 
         <div class="container" main>
 
-          <steren-works></steren-works>
+          <iron-pages attr-for-selected="data-route" selected="contact">
+
+            <section data-route="home">
+              <steren-works></steren-works>
+            </section>
+
+            <section data-route="users">
+              <paper-material elevation="1">
+                <h2 class="page-title">Users</h2>
+                <p>This is the users section</p>
+                <a href$="#">Addy</a><br>
+                <a href$="#">Rob</a><br>
+                <a href$="#">Chuck</a><br>
+                <a href$="#">Sam</a>
+              </paper-material>
+            </section>
+
+            <section data-route="user-info">
+              <paper-material elevation="1">
+                <h2 class="page-title">User: {{params.name}}</h2>
+                <div>This is {{params.name}}'s section</div>
+              </paper-material>
+            </section>
+
+            <section data-route="contact">
+              <sheff-contact></sheff-contact>
+            </section>
+
+
+          </iron-pages>
 
         </div>
 
@@ -247,8 +320,12 @@
         localStorage.setItem("category", "data");
       }
 
-      //      var hello = "Yuriy";
-      //      document.getElementsByTagName("steren-works")[0].setAttribute("hello", hello);
+      function all() {
+        document.getElementsByTagName("steren-works")[0].removeAttribute("category");
+        document.getElementsByTagName("steren-works")[0].setAttribute("category", "all");
+        document.querySelector('steren-works').show = 'all';
+        localStorage.setItem("category", "all");
+      }
 
       this.category = filter;
 
