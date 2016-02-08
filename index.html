@@ -39,6 +39,7 @@
     <link rel="import" href="components/iron-icons/iron-icons.html">
     <link rel="import" href="components/iron-meta/iron-meta.html">
     <link rel="import" href="components/iron-pages/iron-pages.html">
+    <link rel="import" href="components/paper-menu/paper-menu.html">
     <link rel="import" href="sheff-contact.html">
     <link rel="import" href="sheff-fun.html">
 
@@ -172,24 +173,26 @@
         </section>
 
         <section>
-          <a href="/">
-            <paper-item>
-              <iron-icon icon="icons:home"></iron-icon>
-              Projects
-            </paper-item>
-          </a>
-          <a href="http://blog.steren.fr" target="_blank">
-            <paper-item>
-              <iron-icon icon="icons:face"></iron-icon>
-              Fun
-            </paper-item>
-          </a>
-          <a href="http://labs.steren.fr" target="_blank">
-            <paper-item>
-              <iron-icon icon="icons:icons:perm-contact-calendar" aria-label="star"></iron-icon>
-              Contact
-            </paper-item>
-          </a>
+          <paper-menu>
+            <a onclick="home()" href="index.html#!/index.html" title="Projects">
+              <paper-item>
+                <iron-icon icon="icons:home"></iron-icon>
+                Projects
+              </paper-item>
+            </a>
+            <a onclick="fun()" href="index.html#!/index.html" title="Fun">
+              <paper-item>
+                <iron-icon icon="icons:face"></iron-icon>
+                Fun
+              </paper-item>
+            </a>
+            <a onclick="contact()" href="index.html#!/index.html" title="Contct">
+              <paper-item>
+                <iron-icon icon="icons:icons:perm-contact-calendar" aria-label="star"></iron-icon>
+                Contact
+              </paper-item>
+            </a>
+          </paper-menu>
         </section>
 
         <section>
@@ -224,9 +227,9 @@
       <paper-header-panel main>
         <paper-toolbar class="medium-tall">
           <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-          <div>Project Categories</div>
+          <div id="title">Project Categories</div>
 
-          <div class="bottom fit horizontal layout">
+          <div id="tabs" class="bottom fit horizontal layout">
             <paper-tabs class="flex" id="tabs">
               <paper-tab>
                 <a href="#!/web" onclick="web()" class="horizontal center-center layout">Web</a>
@@ -243,14 +246,14 @@
 
         <div class="container" main>
 
-          <iron-pages attr-for-selected="data-route" selected="fun">
+          <iron-pages attr-for-selected="data-route" selected="home">
 
             <section data-route="home">
               <steren-works></steren-works>
             </section>
 
             <section data-route="fun">
-             <sheff-fun></sheff-fun>
+              <sheff-fun></sheff-fun>
             </section>
 
             <section data-route="contact">
@@ -312,6 +315,27 @@
         document.getElementsByTagName("steren-works")[0].setAttribute("category", "all");
         document.querySelector('steren-works').show = 'all';
         localStorage.setItem("category", "all");
+      }
+      
+      function home() {
+        document.getElementsByTagName("iron-pages")[0].removeAttribute("selected");
+        document.getElementsByTagName("iron-pages")[0].setAttribute("selected", "home");
+        document.getElementById("title").innerHTML ='Project Categories';
+        document.getElementById("tabs").style.visibility = "visible";
+      }
+      
+      function fun() {
+        document.getElementsByTagName("iron-pages")[0].removeAttribute("selected");
+        document.getElementsByTagName("iron-pages")[0].setAttribute("selected", "fun");
+        document.getElementById("title").innerHTML ='Fun Projects';
+        document.getElementById("tabs").style.visibility = "hidden";
+      }
+      
+      function contact() {
+        document.getElementsByTagName("iron-pages")[0].removeAttribute("selected");
+        document.getElementsByTagName("iron-pages")[0].setAttribute("selected", "contact");
+        document.getElementById("title").innerHTML ='Contact Me';
+        document.getElementById("tabs").style.visibility = "hidden";
       }
 
       this.category = filter;
