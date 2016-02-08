@@ -70,7 +70,7 @@
     <constant-element></constant-element>
     <iron-meta id="meta"></iron-meta>
 
-    <template is="dom-repeat" items="{{works}}" filter="web">
+    <template is="dom-repeat" items="{{works}}" filter="{{show}}">
 
       <div class="layout horizontal center center-justified wrap">
         <paper-card heading="{{item.title}}">
@@ -87,8 +87,6 @@
         </paper-card>
       </div>
     </template>
-
-    <span>{{show1}}</span>
 
   </template>
   <script>
@@ -112,9 +110,14 @@
           notify: true
         }
       },
-      web: function(item) {
-        var aValue = localStorage.getItem("category");
-        return item.type == aValue;
+      web: function(item) {;
+        return item.type == 'web';
+      },
+      ios: function(item) {;
+        return item.type == 'ios';
+      },
+      data: function(item) {;
+        return item.type == 'data';
       },
       ready: function(){
         this.contacts = [
