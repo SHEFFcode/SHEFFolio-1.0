@@ -40,6 +40,7 @@
     <link rel="import" href="components/iron-meta/iron-meta.html">
     <link rel="import" href="components/iron-pages/iron-pages.html">
     <link rel="import" href="sheff-contact.html">
+    <link rel="import" href="sheff-fun.html">
 
 
     <link rel="import" href="steren-works.html">
@@ -179,13 +180,13 @@
           </a>
           <a href="http://blog.steren.fr" target="_blank">
             <paper-item>
-              <iron-icon icon="icons:subject"></iron-icon>
+              <iron-icon icon="icons:face"></iron-icon>
               Fun
             </paper-item>
           </a>
           <a href="http://labs.steren.fr" target="_blank">
             <paper-item>
-              <iron-icon icon="icons:explore" aria-label="star"></iron-icon>
+              <iron-icon icon="icons:icons:perm-contact-calendar" aria-label="star"></iron-icon>
               Contact
             </paper-item>
           </a>
@@ -242,28 +243,14 @@
 
         <div class="container" main>
 
-          <iron-pages attr-for-selected="data-route" selected="contact">
+          <iron-pages attr-for-selected="data-route" selected="fun">
 
             <section data-route="home">
               <steren-works></steren-works>
             </section>
 
-            <section data-route="users">
-              <paper-material elevation="1">
-                <h2 class="page-title">Users</h2>
-                <p>This is the users section</p>
-                <a href$="#">Addy</a><br>
-                <a href$="#">Rob</a><br>
-                <a href$="#">Chuck</a><br>
-                <a href$="#">Sam</a>
-              </paper-material>
-            </section>
-
-            <section data-route="user-info">
-              <paper-material elevation="1">
-                <h2 class="page-title">User: {{params.name}}</h2>
-                <div>This is {{params.name}}'s section</div>
-              </paper-material>
+            <section data-route="fun">
+             <sheff-fun></sheff-fun>
             </section>
 
             <section data-route="contact">

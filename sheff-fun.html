@@ -1,0 +1,39 @@
+<link rel="import" href="components/polymer/polymer.html">
+<link rel="import" href="components/google-youtube/google-youtube.html">
+
+
+<dom-module id="sheff-fun">
+  <template>
+    <style is="custom-style">
+      iron-autogrow-textarea{
+        --iron-autogrow-textarea: true;
+      }
+    </style>
+
+    <paper-material elevation="1">
+      <h2 class="page-title">Divvy Rap</h2>
+      <google-youtube
+                      video-id="divvyrap"
+                      height="270px"
+                      width="480px"
+                      rel="0"
+                      start="5"
+                      autoplay="1"
+                      src="https://www.youtube.com/embed/XCB7eciR5cA"
+                      fluid="true">
+      </google-youtube>
+    </paper-material>
+
+    <paper-material elevation="1">
+      <h2 class="page-title">Chicago I love you</h2>
+      <p>Aside from coding I am a fairly active person. I enjoy bike riding, drone flying and making music videos. Check out some of my work:</p>
+    </paper-material>
+
+  </template>
+  <script>
+    Polymer({
+      is: "sheff-fun"
+    });
+
+  </script>
+  </dom-module-element>
