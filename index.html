@@ -224,12 +224,12 @@
 
       </paper-header-panel>
 
-      <paper-header-panel main>
+      <paper-header-panel waterfall-medium-tall main>
         <paper-toolbar class="medium-tall">
           <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
           <div id="title">Project Categories</div>
 
-          <div id="tabs" class="bottom fit horizontal layout">
+          <div id="tabs-hide" class="bottom fit horizontal layout">
             <paper-tabs class="flex" id="tabs">
               <paper-tab>
                 <a href="#!/web" onclick="web()" class="horizontal center-center layout">Web</a>
@@ -318,24 +318,27 @@
       }
       
       function home() {
+        document.getElementsByTagName("paper-toolbar")[0].classList.add("medium-tall");
         document.getElementsByTagName("iron-pages")[0].removeAttribute("selected");
         document.getElementsByTagName("iron-pages")[0].setAttribute("selected", "home");
         document.getElementById("title").innerHTML ='Project Categories';
-        document.getElementById("tabs").style.visibility = "visible";
+        document.getElementById("tabs-hide").style.visibility = "visible";
       }
       
       function fun() {
+        document.getElementsByTagName("paper-toolbar")[0].classList.remove("medium-tall");
         document.getElementsByTagName("iron-pages")[0].removeAttribute("selected");
         document.getElementsByTagName("iron-pages")[0].setAttribute("selected", "fun");
         document.getElementById("title").innerHTML ='Fun Projects';
-        document.getElementById("tabs").style.visibility = "hidden";
+        document.getElementById("tabs-hide").style.visibility = "hidden";
       }
       
       function contact() {
+        document.getElementsByTagName("paper-toolbar")[0].classList.remove("medium-tall");
         document.getElementsByTagName("iron-pages")[0].removeAttribute("selected");
         document.getElementsByTagName("iron-pages")[0].setAttribute("selected", "contact");
         document.getElementById("title").innerHTML ='Contact Me';
-        document.getElementById("tabs").style.visibility = "hidden";
+        document.getElementById("tabs-hide").style.visibility = "hidden";
       }
 
       this.category = filter;
