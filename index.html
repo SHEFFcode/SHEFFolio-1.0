@@ -164,7 +164,7 @@
 
   <body unresolved>
     <constant-element></constant-element>
-    <paper-drawer-panel>
+    <paper-drawer-panel id="drawerPanel">
 
       <paper-header-panel drawer id="drawer">
 
@@ -196,25 +196,25 @@
         </section>
 
         <section>
-          <a href="https://twitter.com/steren" target="_blank">
+          <a href="https://twitter.com/sheffmachine" target="_blank">
             <paper-item>
               <iron-icon src="icons/twitter.svg" aria-label="Twitter"></iron-icon>
               Twitter
             </paper-item>
           </a>
-          <a href="https://plus.google.com/+SterenGiannini" target="_blank">
+          <a href="https://google.com/+JeremyShefer1" target="_blank">
             <paper-item>
               <iron-icon src="icons/google.svg" aria-label="Google"></iron-icon>
               Google+
             </paper-item>
           </a>
-          <a href="https://www.linkedin.com/in/steren" target="_blank">
+          <a href="https://www.linkedin.com/in/yuriy-shefer-c-p-a-82b2782b" target="_blank">
             <paper-item>
               <iron-icon src="icons/linkedin.svg" aria-label="LinkedIn"></iron-icon>
               LinkedIn
             </paper-item>
           </a>
-          <a href="https://github.com/steren" target="_blank">
+          <a href="https://github.com/SHEFFcode" target="_blank">
             <paper-item>
               <iron-icon src="icons/github.svg" aria-label="GitHub"></iron-icon>
               GitHub
@@ -226,7 +226,7 @@
 
       <paper-header-panel waterfall-medium-tall main>
         <paper-toolbar class="medium-tall">
-          <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
           <div id="title">Project Categories</div>
 
           <div id="tabs-hide" class="bottom fit horizontal layout">
@@ -323,6 +323,7 @@
         document.getElementsByTagName("iron-pages")[0].setAttribute("selected", "home");
         document.getElementById("title").innerHTML ='Project Categories';
         document.getElementById("tabs-hide").style.visibility = "visible";
+        document.getElementById("drawerPanel").closeDrawer();
       }
       
       function fun() {
@@ -331,6 +332,7 @@
         document.getElementsByTagName("iron-pages")[0].setAttribute("selected", "fun");
         document.getElementById("title").innerHTML ='Fun Projects';
         document.getElementById("tabs-hide").style.visibility = "hidden";
+        document.getElementById("drawerPanel").closeDrawer();
       }
       
       function contact() {
@@ -339,6 +341,7 @@
         document.getElementsByTagName("iron-pages")[0].setAttribute("selected", "contact");
         document.getElementById("title").innerHTML ='Contact Me';
         document.getElementById("tabs-hide").style.visibility = "hidden";
+        document.getElementById("drawerPanel").closeDrawer();
       }
 
       this.category = filter;
