@@ -48,7 +48,7 @@
 
     <style>
       html,body {
-        height: calc(100% + 1px);
+        height: 100%;
         margin: 0;
         background-color: #E5E5E5;
         font-family: 'RobotoDraft', sans-serif;
@@ -169,7 +169,7 @@
       <paper-header-panel drawer id="drawer">
 
         <section>
-          <h1>Jeremy Shefer</h1>
+          <a href="index.html#!/index.html"><h1>Jeremy Shefer</h1></a>
         </section>
 
         <section>
@@ -180,13 +180,13 @@
                 Projects
               </paper-item>
             </a>
-            <a onclick="fun()" href="index.html#!/index.html" title="Fun">
+            <a onclick="fun()" href="#" title="Fun">
               <paper-item>
                 <iron-icon icon="icons:face"></iron-icon>
                 Fun
               </paper-item>
             </a>
-            <a onclick="contact()" href="index.html#!/index.html" title="Contct">
+            <a onclick="contact()" href="#" title="Contct">
               <paper-item>
                 <iron-icon icon="icons:icons:perm-contact-calendar" aria-label="star"></iron-icon>
                 Contact
@@ -198,25 +198,25 @@
         <section>
           <a href="https://twitter.com/sheffmachine" target="_blank">
             <paper-item>
-              <iron-icon src="icons/twitter.svg" aria-label="Twitter"></iron-icon>
+              <iron-icon src="img/icons/twitter.png" aria-label="Twitter"></iron-icon>
               Twitter
             </paper-item>
           </a>
           <a href="https://google.com/+JeremyShefer1" target="_blank">
             <paper-item>
-              <iron-icon src="icons/google.svg" aria-label="Google"></iron-icon>
+              <iron-icon src="img/icons/google.png" aria-label="Google"></iron-icon>
               Google+
             </paper-item>
           </a>
           <a href="https://www.linkedin.com/in/yuriy-shefer-c-p-a-82b2782b" target="_blank">
             <paper-item>
-              <iron-icon src="icons/linkedin.svg" aria-label="LinkedIn"></iron-icon>
+              <iron-icon src="img/icons/linkedin.png" aria-label="LinkedIn"></iron-icon>
               LinkedIn
             </paper-item>
           </a>
           <a href="https://github.com/SHEFFcode" target="_blank">
             <paper-item>
-              <iron-icon src="icons/github.svg" aria-label="GitHub"></iron-icon>
+              <iron-icon src="img/icons/github.png" aria-label="GitHub"></iron-icon>
               GitHub
             </paper-item>
           </a>
@@ -231,14 +231,14 @@
 
           <div id="tabs-hide" class="bottom fit horizontal layout">
             <paper-tabs class="flex" id="tabs">
-              <paper-tab>
-                <a href="#!/web" onclick="web()" class="horizontal center-center layout">Web</a>
+              <paper-tab onclick="web()">
+                <a href="#!/web" class="horizontal center-center layout">Web</a>
               </paper-tab>
-              <paper-tab>
-                <a href="#!/ios" onclick="ios()" class="horizontal center-center layout">iOS</a>
+              <paper-tab onclick="ios()">
+                <a href="#!/ios" class="horizontal center-center layout">iOS</a>
               </paper-tab>
-              <paper-tab>
-                <a href="#!/data" onclick="data()" class="horizontal center-center layout">Data</a>
+              <paper-tab onclick="data()">
+                <a href="#!/data" class="horizontal center-center layout">Data</a>
               </paper-tab>
             </paper-tabs>
           </div>
@@ -272,6 +272,8 @@
 
     <script>
 
+    console.log = function() {}
+
       var tabs =  Polymer.dom(document).querySelector('paper-tabs');
       var works = document.querySelector('steren-works');
 
@@ -290,31 +292,19 @@
       var filter = "web";
 
       function ios() {
-        document.getElementsByTagName("steren-works")[0].removeAttribute("category");
-        document.getElementsByTagName("steren-works")[0].setAttribute("category", "ios");
         document.querySelector('steren-works').show = 'ios';
-        localStorage.setItem("category", "ios");
       }
 
       function web() {
-        document.getElementsByTagName("steren-works")[0].removeAttribute("category");
-        document.getElementsByTagName("steren-works")[0].setAttribute("category", "web");
         document.querySelector('steren-works').show = 'web';
-        localStorage.setItem("category", "web");
       }
 
       function data(){
-        document.getElementsByTagName("steren-works")[0].removeAttribute("category");
-        document.getElementsByTagName("steren-works")[0].setAttribute("category", "data");
         document.querySelector('steren-works').show = 'data';
-        localStorage.setItem("category", "data");
       }
 
       function all() {
-        document.getElementsByTagName("steren-works")[0].removeAttribute("category");
-        document.getElementsByTagName("steren-works")[0].setAttribute("category", "all");
         document.querySelector('steren-works').show = 'all';
-        localStorage.setItem("category", "all");
       }
       
       function home() {
